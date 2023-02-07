@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Draggable Todo App</title>
+</head>
+
+<body>
+  <!-- modal -->
+  <div class="modal" id="todo_form">
+    <div class="header">
+      <div class="title">Add Task</div>
+      <button class="btn close-modal">&times;</button>
+    </div>
+    <div class="body">
+      <input type="text" id="todo_input" />
+      <input type="submit" value="Add Todo" id="todo_submit" />
+    </div>
+  </div>
+
+  <!-- Descn modal -->
+  <div class="modal" id="descn_form">
+    <div class="header">
+      <div class="title">Add Description</div>
+      <button class="btn close-modal">&times;</button>
+    </div>
+    <div class="body">
+      <input type="text" id="descn_input" />
+      <input type="submit" value="Add Description" id="descn_submit" />
+    </div>
+  </div>
+
+
+
+
+  <!-- todo -->
+  <div class="todo-container">
+    <div class="status" id="open_status">
+      <h1>Open</h1>
+      <button id="add_btn" data-target-modal="#todo_form">Add Task</button>
+
+      <!-- <div class="todo" draggable="true">
+          Buy a Pizza<
+          <p class="descp">Description</p>
+          <button id="add_desc" data-target-modal="#todo_form">+ Add Todo</button>
+          
+          <span class="close">&times;</span>
+        </div> -->
+    </div>
+    <div class="status">
+      <h1>In Progress</h1>
+    </div>
+    <div class="status">
+      <h1>In Review</h1>
+    </div>
+    <div class="status">
+      <h1>Done</h1>
+    </div>
+  </div>
+
+  <div id="overlay"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"
+    integrity="sha512-k2WPPrSgRFI6cTaHHhJdc8kAXaRM4JBFEDo1pPGGlYiOyv4vnA0Pp0G5XMYYxgAPmtmv/IIaQA6n5fLAyJaFMA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js"
+    integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
