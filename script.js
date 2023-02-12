@@ -86,11 +86,21 @@ todo_submit.addEventListener("click", createTodo);
 
 function createTodo() {
   const todo_div = document.createElement("div");
+  const todo_p = document.createElement("p");
+  const todo_h = document.createElement("h3");
   const input_val = document.getElementById("todo_input").value;
+  const input_val2 = document.getElementById("descn_input").value;
   const txt = document.createTextNode(input_val);
+  const txt2 = document.createTextNode(input_val2);
 
-  todo_div.appendChild(txt);
+  
+  todo_div.appendChild(todo_h);
+  todo_h.appendChild(txt);
+  todo_div.appendChild(todo_p);
+  todo_p.appendChild(txt2);
   todo_div.classList.add("todo");
+  todo_h.classList.add("t_head");
+  todo_p.classList.add("descp");
   todo_div.setAttribute("draggable", "true");
 
   /* create span */
@@ -115,10 +125,10 @@ function createTodo() {
   todo_form.classList.remove("active");
   overlay.classList.remove("active");
 
-  const myBtn = document.createElement("button");
-  myBtn.innerHTML="+";
-  myBtn.setAttribute('class', 'descnBtn');
-  todo_div.appendChild(myBtn);
+  // const myBtn = document.createElement("button");
+  // myBtn.innerHTML="+";
+  // myBtn.setAttribute('class', 'descnBtn');
+  // todo_div.appendChild(myBtn);
 
   // const myBtn1 = document.createElement("button");
   // myBtn1.innerHTML="edit";
@@ -138,7 +148,7 @@ $(document).on('click','.addDescnBtn',function(){
 	$(this).parent().append(description);
 	$(this).parent().find('.descn_text').hide();
 	$(this).parent().find('.addDescnBtn').hide();
-  $(this).parent().find('.descnBtn').hide();
+  // $(this).parent().find('.descnBtn').hide();
   // $(this).parent().find('.descnBtn1').display();
 });
 
@@ -150,4 +160,5 @@ close_btns.forEach((btn) => {
     btn.parentElement.style.display = "none";
   });
 });
+
 

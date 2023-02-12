@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  <title>Draggable Todo App</title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <title>Task Manager App</title>
 </head>
 
 <body>
@@ -16,7 +18,8 @@
       <button class="btn close-modal">&times;</button>
     </div>
     <div class="body">
-      <input type="text" id="todo_input" />
+      <input type="text" id="todo_input"  placeholder="Task Title"/>
+      <input type="text" id="descn_input" placeholder="Task Description"/>
       <input type="submit" value="Add Todo" id="todo_submit" />
     </div>
   </div>
@@ -42,13 +45,13 @@
       <h1>Open</h1>
       <button id="add_btn" data-target-modal="#todo_form">Add Task</button>
 
-      <!-- <div class="todo" draggable="true">
-          Buy a Pizza<
+      <div class="todo" draggable="true">
+          <h3 class="t_head">Buy a Pizza</h3>
           <p class="descp">Description</p>
-          <button id="add_desc" data-target-modal="#todo_form">+ Add Todo</button>
+          <!-- <button id="add_desc" data-target-modal="#todo_form">+ Add Todo</button> -->
           
           <span class="close">&times;</span>
-        </div> -->
+        </div>
     </div>
     <div class="status">
       <h1>In Progress</h1>

@@ -1,171 +1,666 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgb(26,90,194);
-    background: linear-gradient(90deg, rgba(26,90,194,1) 0%, rgba(193,122,221,1) 51%, rgb(9 180 218) 100%, rgba(0,212,255,1) 100%);
-  }
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(26, 90, 194, 1) 0%, rgba(193, 122, 221, 1) 51%, rgb(9 180 218) 100%, rgba(0, 212, 255, 1) 100%);
+}
+
+
+
+.todo-container {
+  width: 90%;
+  /* height: 80vh; */
+  display: flex;
+}
+
+.status {
+  width: 25%;
+  min-height: 80vh;
+  /* background-color: #f5eae8; */
+  position: relative;
+  padding: 60px 1rem 0.5rem;
+  margin: 0px 15px;
+  box-shadow: 1px 1px 28px 3px #23697d;
+}
+
+/* .status:nth-child(even) {
+    background-color: #e9e9e96b;
+  } */
+
+.status h1 {
+  position: absolute;
+  font-family: cursive;
+  font-size: 33px;
+  top: 0;
+  left: 0;
+  background-color: rgb(214 177 170);
+  color: rgb(0 0 0);
+  margin: 0;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+#add_btn {
+  padding: 0.5rem 1rem;
+  background-color: #ccc;
+  outline: none;
+  border: none;
+  width: 100%;
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#add_btn:hover {
+  background-color: #aaa;
+}
+
+.todo {
+  display: block;
+  overflow-wrap: break-word;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
+    rgba(15, 15, 15, 0.1) 0px 2px 4px;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+
+.todo .close {
+  position: absolute;
+  right: 1rem;
+  top: 0rem;
+  font-size: 2rem;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.todo .close:hover {
+  color: #343444;
+}
+
+/* modal */
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.modal {
+  width: 20%;
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: top 0.3s ease-in-out;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px 5px #1a1a4687;
+}
+
+.modal.active {
+  top: 50%;
+}
+
+.modal .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.modal .body {
+  padding: 0.75rem;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#overlay.active {
+  display: block;
+}
+
+#todo_input,
+#todo_submit,
+#descn_input {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  margin: 0.25rem;
+  border-radius: 7px;
+}
+
+
+#todo_submit {
+  background-color: #6a5e9a;
+  ;
+  color: #f3f3f3;
+  font-size: 1.25rem;
+  border: none;
+}
+
+/* #descn_input{
+    padding: 0.5rem 1rem;
+    width: 100%;
+    margin: 0.25rem;
+  } */
+
+.descnBtn {
+  position: absolute;
+  right: -12px;
+  top: -7px;
+}
+
+/* .todo p {
+  display: list-item;
+    margin-left: 18px;
+    text-align: justify;
+    font-size: 18px;
+} */
+
+/* .todo p {
+  display: list-item;
+  margin-top: -26px;
+  margin-bottom: -5px;
+  margin-left: 18px;
+  text-align: justify;
+  font-size: 18px;
+} */
+/* .descn_input{
+  display: block;
+} */
+.t_head {
+  display: flex;
+  font-family: cursive;
+  font-size: 27px;
+  color: black;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.descp {
+  display: flex;
+  font-size: 18px;
+  font-style: italic;
+  font-family: cursive;
+  font-weight: 600;
+  text-align: justify;
+}
+
+
+
+@media (max-width: 968px) {
   .todo-container {
-    width: 90%;
-    height: 80vh;
+    width: 100%;
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 12px;
   }
-  
+
   .status {
-    width: 25%;
+    width: 418px;
+    min-height: 50vh;
     /* background-color: #f5eae8; */
     position: relative;
     padding: 60px 1rem 0.5rem;
-    margin: 0px 15px;
+    margin: 0px 5px;
+    box-shadow: 1px 1px 18px 3px #23697d;
   }
-  
-  /* .status:nth-child(even) {
-    background-color: #e9e9e96b;
-  } */
-  
+
   .status h1 {
     position: absolute;
-    top: 0;
-    left: 0;
-    /* background-color: rgb(214 177 170); */
+    font-family: cursive;
+    font-size: 20px;
+    background-color: rgb(214 177 170);
     color: rgb(0 0 0);
     margin: 0;
     width: 100%;
     padding: 0.5rem 1rem;
+    text-align: center;
   }
-  
+
   #add_btn {
     padding: 0.5rem 1rem;
     background-color: #ccc;
     outline: none;
     border: none;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 0.5rem 0;
     border-radius: 4px;
     cursor: pointer;
   }
-  
-  #add_btn:hover {
-    background-color: #aaa;
+
+  .t_head {
+    display: flex;
+    font-family: cursive;
+    font-size: 17px;
+    color: black;
+    overflow-wrap: anywhere;
+    text-transform: uppercase;
+    text-align: center;
   }
-  
-  .todo {
-    display: block;
-    overflow-wrap: break-word;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    background-color: #fff;
-    box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px,
-      rgba(15, 15, 15, 0.1) 0px 2px 4px;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
-    background: rgba( 255, 255, 255, 0.25 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 4px );
--webkit-backdrop-filter: blur( 4px );
-border-radius: 10px;
-border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+  .descp {
+    display: flex;
+    font-size: 14px;
+    font-style: italic;
+    font-family: cursive;
+    font-weight: 600;
+    text-align: justify;
   }
-  
-  
+
   .todo .close {
     position: absolute;
-    right: 1rem;
+    right: 0rem;
     top: 0rem;
     font-size: 2rem;
     color: #ccc;
     cursor: pointer;
   }
-  
-  .todo .close:hover {
-    color: #343444;
-  }
-  
-  /* modal */
-  
-  .close-modal {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-  }
-  
-  .modal {
-    width: 450px;
-    position: fixed;
-    top: -50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: top 0.3s ease-in-out;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    z-index: 2;
-    background-color: #fff;
-  }
-  
-  .modal.active {
-    top: 15%;
-  }
-  
-  .modal .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #ccc;
-    padding: 0.5rem;
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-  
-  .modal .body {
-    padding: 0.75rem;
-  }
-  
-  #overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  #overlay.active {
-    display: block;
-  }
-  
-  #todo_input,
-  #todo_submit {
-    padding: 0.5rem 1rem;
-    width: 100%;
-    margin: 0.25rem;
-  }
-  
-  #todo_submit {
-    background-color: #4caf50;
-    color: #f3f3f3;
-    font-size: 1.25rem;
-    border: none;
-  }
 
-  .descnBtn {
+  .todo .close {
     position: absolute;
-    right: -12px;
-    top: -7px;
+    right: 0.3rem;
+    top: -0.6rem;
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .modal {
+    width: 78%;
+  }
 }
 
-.todo p {
-  display: list-item;
-    margin-left: 18px;
+
+
+
+
+@media (max-width: 768px) {
+  .todo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+
+  .status {
+    width: 258px;
+    min-height: 50vh;
+    /* background-color: #f5eae8; */
+    position: relative;
+    padding: 60px 1rem 0.5rem;
+    margin: 0px 5px;
+    box-shadow: 1px 1px 18px 3px #23697d;
+  }
+
+  .status h1 {
+    position: absolute;
+    font-family: cursive;
+    font-size: 20px;
+    background-color: rgb(214 177 170);
+    color: rgb(0 0 0);
+    margin: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-align: center;
+  }
+
+  #add_btn {
+    padding: 0.5rem 1rem;
+    background-color: #ccc;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .t_head {
+    display: flex;
+    font-family: cursive;
+    font-size: 15px;
+    color: black;
+    overflow-wrap: anywhere;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .descp {
+    display: flex;
+    font-size: 13px;
+    font-style: italic;
+    font-family: cursive;
+    font-weight: 600;
     text-align: justify;
-    font-size: 18px;
+  }
+
+  .todo .close {
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .todo .close {
+    position: absolute;
+    right: 0.3rem;
+    top: -0.6rem;
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .modal {
+    width: 78%;
+  }
 }
+
+
+
+
+
+@media (max-width: 590px) {
+  .todo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+
+  .status {
+    width: 198px;
+    min-height: 50vh;
+    /* background-color: #f5eae8; */
+    position: relative;
+    padding: 60px 1rem 0.5rem;
+    margin: 0px 5px;
+    box-shadow: 1px 1px 18px 3px #23697d;
+  }
+
+  .status h1 {
+    position: absolute;
+    font-family: cursive;
+    font-size: 20px;
+    background-color: rgb(214 177 170);
+    color: rgb(0 0 0);
+    margin: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-align: center;
+  }
+
+  #add_btn {
+    padding: 0.5rem 1rem;
+    background-color: #ccc;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 0.7rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .t_head {
+    display: flex;
+    font-family: cursive;
+    font-size: 13px;
+    color: black;
+    overflow-wrap: anywhere;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .descp {
+    display: flex;
+    font-size: 13px;
+    font-style: italic;
+    font-family: cursive;
+    font-weight: 600;
+    text-align: justify;
+  }
+
+  .todo .close {
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .todo .close {
+    position: absolute;
+    right: 0.3rem;
+    top: -0.6rem;
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .modal {
+    width: 78%;
+  }
+}
+
+
+/*Bootstrap css and nav bar 
+*/
+
+
+@media (max-width: 430px) {
+  .todo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+
+  .status {
+    width: 173px;
+    min-height: 50vh;
+    /* background-color: #f5eae8; */
+    position: relative;
+    padding: 60px 1rem 0.5rem;
+    margin: 0px 5px;
+    box-shadow: 1px 1px 18px 3px #23697d;
+  }
+
+  .status h1 {
+    position: absolute;
+    font-family: cursive;
+    font-size: 17px;
+    background-color: rgb(214 177 170);
+    color: rgb(0 0 0);
+    margin: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-align: center;
+  }
+
+  #add_btn {
+    padding: 0.5rem 1rem;
+    background-color: #ccc;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 0.7rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .t_head {
+    display: flex;
+    font-family: cursive;
+    font-size: 10px;
+    color: black;
+    overflow-wrap: anywhere;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .descp {
+    display: flex;
+    font-size: 11px;
+    font-style: italic;
+    font-family: cursive;
+    font-weight: 600;
+    text-align: justify;
+  }
+
+  .todo .close {
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .todo .close {
+    position: absolute;
+    right: 0.3rem;
+    top: -0.6rem;
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .modal {
+    width: 78%;
+  }
+}
+
+
+
+@media (max-width: 380px) {
+  .todo-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+
+  .status {
+    width: 160px;
+    min-height: 50vh;
+    /* background-color: #f5eae8; */
+    position: relative;
+    padding: 60px 1rem 0.5rem;
+    margin: 0px 5px;
+    box-shadow: 1px 1px 18px 3px #23697d;
+  }
+
+  .status h1 {
+    position: absolute;
+    font-family: cursive;
+    font-size: 16px;
+    background-color: rgb(214 177 170);
+    color: rgb(0 0 0);
+    margin: 0;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    text-align: center;
+  }
+
+  #add_btn {
+    padding: 0.5rem 1rem;
+    background-color: #ccc;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-size: 0.7rem;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .t_head {
+    display: flex;
+    font-family: cursive;
+    font-size: 10px;
+    color: black;
+    overflow-wrap: anywhere;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .descp {
+    display: flex;
+    font-size: 10px;
+    font-style: italic;
+    font-family: cursive;
+    font-weight: 600;
+    text-align: justify;
+  }
+
+  .todo .close {
+    position: absolute;
+    right: 0rem;
+    top: 0rem;
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .todo .close {
+    position: absolute;
+    right: 0.3rem;
+    top: -0.6rem;
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+  }
+
+  .modal {
+    width: 78%;
+  }
+}
+
