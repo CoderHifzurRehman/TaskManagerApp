@@ -51,7 +51,8 @@ function dragDrop() {
   console.log("dropped");
 }
 
-/* modal */
+/* Modal */
+
 const btns = document.querySelectorAll("[data-target-modal]");
 const close_modals = document.querySelectorAll(".close-modal");
 const overlay = document.getElementById("overlay");
@@ -93,7 +94,7 @@ function createTodo() {
   const txt = document.createTextNode(input_val);
   const txt2 = document.createTextNode(input_val2);
 
-  
+
   todo_div.appendChild(todo_h);
   todo_h.appendChild(txt);
   todo_div.appendChild(todo_p);
@@ -109,9 +110,19 @@ function createTodo() {
   span.classList.add("close");
   span.appendChild(span_txt);
 
+  const time_span = document.createElement("span");
+  let currentDate = new Date();
+  var am_pm = currentDate.getHours() >= 12 ? "PM" : "AM";
+  let time = currentDate.getDate() + "/"+ currentDate.getUTCMonth() + "/"+currentDate.getFullYear() + "  "+ (currentDate.getHours()% 12 || 12) + ":" + currentDate.getMinutes()+am_pm;
+  const time_span_txt = document.createTextNode(time);
+  time_span.classList.add("time");
+  time_span.appendChild(time_span_txt);
+
   todo_div.appendChild(span);
+  todo_div.appendChild(time_span);
 
   open_status.appendChild(todo_div);
+
 
   span.addEventListener("click", () => {
     span.parentElement.style.display = "none";
@@ -122,35 +133,10 @@ function createTodo() {
   todo_div.addEventListener("dragend", dragEnd);
 
   document.getElementById("todo_input").value = "";
+  document.getElementById("descn_input").value = "";
   todo_form.classList.remove("active");
   overlay.classList.remove("active");
-
-  // const myBtn = document.createElement("button");
-  // myBtn.innerHTML="+";
-  // myBtn.setAttribute('class', 'descnBtn');
-  // todo_div.appendChild(myBtn);
-
-  // const myBtn1 = document.createElement("button");
-  // myBtn1.innerHTML="edit";
-  // myBtn.setAttribute('class', 'descnBtn1');
-  // todo_div.appendChild(myBtn1);
-  // $(this).parent().find('.descnBtn1').hide();
 }
-
-$(document).on('click','.descnBtn',function(){
-  var html = '<br />';
-  html += '<textarea rows="3" cols="20" class="descn_text"></textarea><br /><button class="addDescnBtn">Add</button>';
-  $(this).parent().append(html);
-});
-
-$(document).on('click','.addDescnBtn',function(){
-	var description = "<p>"+$(this).parent().find('.descn_text').val()+"</p>";
-	$(this).parent().append(description);
-	$(this).parent().find('.descn_text').hide();
-	$(this).parent().find('.addDescnBtn').hide();
-  // $(this).parent().find('.descnBtn').hide();
-  // $(this).parent().find('.descnBtn1').display();
-});
 
 
 const close_btns = document.querySelectorAll(".close");
