@@ -217,6 +217,11 @@ body {
   text-align: justify;
 }
 
+.time{
+  display: flex;
+  justify-content: center;
+}
+
 
 
 @media (max-width: 968px) {
@@ -639,6 +644,7 @@ body {
     font-family: cursive;
     font-weight: 600;
     text-align: justify;
+    overflow-wrap: anywhere;
   }
 
   .todo .close {
