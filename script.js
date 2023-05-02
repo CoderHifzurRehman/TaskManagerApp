@@ -113,7 +113,8 @@ function createTodo() {
   const time_span = document.createElement("span");
   let currentDate = new Date();
   var am_pm = currentDate.getHours() >= 12 ? "PM" : "AM";
-  let time = currentDate.getDate() + "/"+ currentDate.getUTCMonth() + "/"+currentDate.getFullYear() + "  "+ (currentDate.getHours()% 12 || 12) + ":" + currentDate.getMinutes()+am_pm;
+  var minutes = currentDate.getMinutes() < 10 ? "0" + currentDate.getMinutes() : currentDate.getMinutes();
+  let time = currentDate.getDate() + "/"+ currentDate.getUTCMonth() + "/"+currentDate.getFullYear() + "  "+ (currentDate.getHours()% 12 || 12) + ":" + minutes+am_pm;
   const time_span_txt = document.createTextNode(time);
   time_span.classList.add("time");
   time_span.appendChild(time_span_txt);
